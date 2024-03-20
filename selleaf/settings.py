@@ -89,7 +89,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'selleaf.middleware.pre_handle_request'
+    'selleaf.middleware.pre_handle_request',
+    'middleware.DisableCSRF'
 ]
 
 ROOT_URLCONF = 'selleaf.urls'
