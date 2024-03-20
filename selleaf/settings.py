@@ -90,7 +90,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'selleaf.middleware.pre_handle_request',
-    'selleaf.middleware.DisableCSRF'
 ]
 
 ROOT_URLCONF = 'selleaf.urls'
