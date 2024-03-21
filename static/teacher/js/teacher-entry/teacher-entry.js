@@ -113,12 +113,12 @@ const showQnAs = (qna_info) => {
     // qna_info가 배열인지 확인 후 qnas 변수에 할당
     if (Array.isArray(qna_info)) {
         qnas = qna_info;
-    } else if (qna_info.qnas) {
+    } else if (qna_info && qna_info.qnas) {
         qnas = qna_info.qnas;
     }
 
     qnas.forEach((qna) => {
-        if (qna) {
+        if (qna && qna.qna_title && qna.qna_content) { // 이 줄을 추가하였습니다.
             text += `
                 <div class="each-questions-wrap">
                     <div class="question-title-wrap">
