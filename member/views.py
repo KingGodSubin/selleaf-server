@@ -28,13 +28,13 @@ from trade.models import TradeScrap, TradeFile, TradePlant, Trade
 class MemberJoinView(View):
     def get(self, request):
         member = request.GET
-        context = {
-            'memberEmail': member['member_email'],
-            'memberName': member['member_name'],
-            'memberProfile': member['member_profile'],
-            'memberType': member['member_type'],
-        }
-        return render(request, 'member/join/join.html', context)
+        # context = {
+        #     'memberEmail': member['member_email'],
+        #     'memberName': member['member_name'],
+        #     'memberProfile': member['member_profile'],
+        #     'memberType': member['member_type'],
+        # }
+        return render(request, 'member/join/join.html')
 
     def post(self, request):
         post_data = request.POST
