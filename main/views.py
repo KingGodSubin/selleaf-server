@@ -136,7 +136,7 @@ class SearchView(View):
         lecture_count = lectures_queryset.count()
 
         for lecture in lectures:
-            lecture_file = LecturePlaceFile.objects.filter(lecture_id=lecture['id']).values('file_url').first()
+            lecture_file = LectureProductFile.objects.filter(lecture_id=lecture['id']).values('file_url').first()
             lecture['lecture_file_url'] = lecture_file['file_url'] if lecture_file else None
             lecture_scrap = LectureScrap.objects.filter(lecture_id=lecture['id'], member_id=member['id']).values(
                 'status').first()
@@ -282,7 +282,7 @@ class BestLectureCategoryAPI(APIView):
                                     'lecture_rating', 'lecture_price')[:3]
 
         for best_lecture in best_lectures:
-            lecture_file = LecturePlaceFile.objects.filter(lecture_id=best_lecture['id']).values('file_url').first()
+            lecture_file = LectureProductFile.objects.filter(lecture_id=best_lecture['id']).values('file_url').first()
             best_lecture['lecture_file_url'] = lecture_file['file_url'] if lecture_file else None
             tags = LecturePlant.objects.filter(lecture_id=best_lecture['id']).values('plant_name')
             best_lecture['lecture_tags'] = [tag['plant_name'] for tag in tags]

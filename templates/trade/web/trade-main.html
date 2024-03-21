@@ -5,9 +5,9 @@
 {% endblock %}
 {% block title %}상품홈{% endblock %}
 {% block content %}
-  <body>
+<body>
+  {% include 'fix/header.html' %}
     <div class="layout">
-      {% include 'fix/header.html' %}
       <!-- 거래 카테고리 탭 -->
       <div class="category-wrap-" style="height: 52px">
         <div
@@ -414,7 +414,7 @@
       </div>
     </div>
     {% include 'fix/footer.html' %}
-  </body>
+</body>
 {% endblock %}
 {% block js %}
   <script>  const csrf_token = '{{ csrf_token }}' </script>
