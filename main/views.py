@@ -10,7 +10,7 @@ from rest_framework.response import Response
 
 from alarm.models import Alarm
 from knowhow.models import Knowhow, KnowhowFile, KnowhowScrap, KnowhowTag
-from lecture.models import Lecture, LecturePlaceFile, LectureReview, LectureScrap, LecturePlant
+from lecture.models import Lecture, LectureReview, LectureScrap, LecturePlant, LectureProductFile
 from post.models import Post, PostScrap, PostTag, PostFile
 from trade.models import Trade, TradeFile, TradeScrap
 
@@ -232,7 +232,7 @@ class MainView(View):
         lectures = Lecture.objects.filter().order_by('-id') \
                        .values('id', 'lecture_title', 'lecture_content')[:4]
         for lecture in lectures:
-            lecture_file = LecturePlaceFile.objects.filter(lecture_id=lecture['id']).values('file_url').first()
+            lecture_file = LectureProductFile.objects.filter(lecture_id=lecture['id']).values('file_url').first()
             lecture['lecture_file_url'] = lecture_file['file_url'] if lecture_file else None
             if member is None:
                 lecture['lecture_scrap'] = False
