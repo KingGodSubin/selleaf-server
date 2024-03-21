@@ -21,16 +21,16 @@
                         <div class="sns-wrap">
                             <div class="sns-text">SNS계정으로 간편 로그인</div>
                             <div class="social-logins">
-                                <form
-                                        action="{% provider_login_url 'google' %}"
-                                        method="post"
-                                        class="login-with-sns-wrap"
-                                >
-                                    {% csrf_token %}
-                                    <button>
-                                        <img src="{% static 'member/images/login/google-logo.svg' %}" alt=""/>
-                                    </button>
-                                </form>
+{#                                <form#}
+{#                                        action="{% provider_login_url 'google' %}"#}
+{#                                        method="post"#}
+{#                                        class="login-with-sns-wrap"#}
+{#                                >#}
+{#                                    {% csrf_token %}#}
+{#                                    <button>#}
+{#                                        <img src="{% static 'member/images/login/google-logo.svg' %}" alt=""/>#}
+{#                                    </button>#}
+{#                                </form>#}
                                 <form
                                         action="{% provider_login_url 'kakao' %}"
                                         method="post"
