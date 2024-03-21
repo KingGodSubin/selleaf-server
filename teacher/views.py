@@ -14,7 +14,7 @@ class TeacherEntryView(View):
         teacher_check = Teacher.objects.filter(member_id=member['id']).values('teacher_status').first()
 
         # 최근 생성된 강의 10개 가지고 오기
-        lectures = Lecture.enabled_objects.all().values('lecture_title', 'id', 'teacher__member__member_name')[:10]
+        lectures = Lecture.enabled_objects.all().values('lecture_title', 'id', 'teacher__member__member_name')
 
         for lecture in lectures:
             lecture_photo = LectureProductFile.objects.filter(lecture_id=lecture['id']).values('file_url').first()
