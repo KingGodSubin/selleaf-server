@@ -168,7 +168,7 @@ class MainView(View):
         end_of_week = start_of_week + timedelta(days=6)
         # created_date__range = (start_of_week, end_of_week)
 
-        best_knowhow = Knowhow.objects.filter().order_by('knowhow_count') \
+        best_knowhow = Knowhow.objects.filter().order_by('-knowhow_count') \
             .annotate(member_profile=F('member__memberprofile__file_url'),
                       member_name=F('member__member_name')) \
             .values('member_profile', 'member_name', 'id').first()
