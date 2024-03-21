@@ -248,8 +248,8 @@ class MainView(View):
                               .values('id', 'lecture_title', 'review_content', 'lecture_id')[:3]
         for lecture_review in lecture_reviews:
             lecture_review_file = Lecture.objects.filter(id=lecture_review['lecture_id']).values(
-                'lectureplacefile__file_url').first()
-            lecture_review['lecture_file_url'] = lecture_review_file['lectureplacefile__file_url']
+                'lectureproductfile__file_url').first()
+            lecture_review['lecture_file_url'] = lecture_review_file['lectureproductfile__file_url']
 
 
         context = {
