@@ -36,15 +36,15 @@ def pre_handle_request(get_response):
                         return redirect('/member/login')
 
                 # 관리자 페이지 요청
-                if 'admin' in uri:
-                    # 관리자 페이지 중 관리자 로그인 이외의 서비스를 요청했을 때
-                    if 'admin/login' not in uri:
-                        # 세션에 관리자 정보가 없으면
-                        if request.session.get('admin') is None:
-                            # 요청한 경로를 session에 담아놓은 뒤
-                            request.session['previous_uri'] = uri
-                            # 관리자 로그인 페이지로 이동시킨다
-                            return redirect('manager-login')
+                # if 'admin' in uri:
+                #     # 관리자 페이지 중 관리자 로그인 이외의 서비스를 요청했을 때
+                #     if 'admin/login' not in uri:
+                #         # 세션에 관리자 정보가 없으면
+                #         if request.session.get('admin') is None:
+                #             # 요청한 경로를 session에 담아놓은 뒤
+                #             request.session['previous_uri'] = uri
+                #             # 관리자 로그인 페이지로 이동시킨다
+                #             return redirect('manager-login')
 
             # 모바일 환경에서 요청을 했지만
             if request.user_agent.is_mobile:
