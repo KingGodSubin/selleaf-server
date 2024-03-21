@@ -112,38 +112,41 @@ const showQnAs = (qna_info) => {
 
     // qna_info가 배열인지 확인 후 qnas 변수에 할당
     if (Array.isArray(qna_info)) {
-        // 배열에서 undefined인 요소 제거
-        qnas = qna_info.filter(qna => qna !== undefined);
-    } else {
-        // qna_info가 객체일 경우 qnas 속성에 할당
-        qnas = qna_info.qnas.filter(qna => qna !== undefined);
+        qnas = qna_info;
+    } else if (qna_info.qnas) {
+        qnas = qna_info.qnas;
     }
 
     qnas.forEach((qna) => {
-        text += `
-            <div class="each-questions-wrap">
-                <div class="question-title-wrap">
-                    ${qna.qna_title}
-                    <span class="expansion-button-wrap">
-                        <!-- JS - 클릭하면 답변 펼쳐짐 + 버튼 180도 회전 -->
-                        <img
-                            class="expansion-button"
-                            src='/static/public/web/images/common/button-down.png'
-                        />
-                    </span>
-                </div>
-                <!-- 답변 - 평소에는 height 0 -->
-                <div class="answer-wrap">
-                    <div class="answer-container">
-                        ${qna.qna_content}
+        if (qna) {
+            text += `
+                <div class="each-questions-wrap">
+                    <div class="question-title-wrap">
+                        ${qna.qna_title}
+                        <span class="expansion-button-wrap">
+                            <!-- JS - 클릭하면 답변 펼쳐짐 + 버튼 180도 회전 -->
+                            <img
+                                class="expansion-button"
+                                src='/static/public/web/images/common/button-down.png'
+                            />
+                        </span>
+                    </div>
+                    <!-- 답변 - 평소에는 height 0 -->
+                    <div class="answer-wrap">
+                        <div class="answer-container">
+                            ${qna.qna_content}
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
     });
 
     return text;
 }
+
+
+
 const nextQnAs = () => {
     // 햔재 스크롤 위치와 리스트 부분의 현재 높이
     let currentscroll = document.documentElement.scrollTop;
