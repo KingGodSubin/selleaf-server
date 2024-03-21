@@ -112,10 +112,11 @@ const showQnAs = (qna_info) => {
 
     // qna_info가 배열인지 확인 후 qnas 변수에 할당
     if (Array.isArray(qna_info)) {
-        qnas = qna_info;
+        // 배열에서 undefined인 요소 제거
+        qnas = qna_info.filter(qna => qna !== undefined);
     } else {
         // qna_info가 객체일 경우 qnas 속성에 할당
-        qnas = qna_info.qnas;
+        qnas = qna_info.qnas.filter(qna => qna !== undefined);
     }
 
     qnas.forEach((qna) => {
