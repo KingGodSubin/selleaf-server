@@ -71,41 +71,78 @@ let keyword = ''
 const listSection = document.querySelector('.list-section')
 
 // QnA 목록을 화면에 띄우는 함수
-const showQnAs = (qna_info) => {
-    // 화면에 뿌릴 HTML 코드를 담기 위한 빈 문자열
-    let text = ``
-    console.log(qna_info)
-    // 조회한 데이터 중 QnA 리스트만 가져옴
-    qnas = qna_info.qnas;
+// const showQnAs = (qna_info) => {
+//     // 화면에 뿌릴 HTML 코드를 담기 위한 빈 문자열
+//     let text = ``
+//     console.log(qna_info)
+//     // 조회한 데이터 중 QnA 리스트만 가져옴
+//     qnas = qna_info.qnas;
+//
+//     // 각 QnA를 HTML 코드에 담아 text 변수에 추가
+//     qnas.forEach((qna) => {
+//         text += `
+//             <div class="each-questions-wrap">
+//               <div class="question-title-wrap">
+//                 ${ qna.qna_title }
+//                 <span class="expansion-button-wrap">
+//                   <!-- JS - 클릭하면 답변 펼쳐짐 + 버튼 180도 회전 -->
+//                   <img
+//                     class="expansion-button"
+//                     src='/static/public/web/images/common/button-down.png'
+//                   />
+//                 </span>
+//               </div>
+//               <!-- 답변 - 평소에는 height 0 -->
+//               <div class="answer-wrap">
+//                 <div class="answer-container">
+//                   ${qna.qna_content}
+//                 </div>
+//               </div>
+//             </div>
+//         `;
+//     });
+//
+//     // 완성된 문자열 반환
+//     return text;
+// }
 
-    // 각 QnA를 HTML 코드에 담아 text 변수에 추가
+const showQnAs = (qna_info) => {
+    let text = ``;
+    let qnas = [];
+
+    // qna_info가 배열인지 확인 후 qnas 변수에 할당
+    if (Array.isArray(qna_info)) {
+        qnas = qna_info;
+    } else {
+        // qna_info가 객체일 경우 qnas 속성에 할당
+        qnas = qna_info.qnas;
+    }
+
     qnas.forEach((qna) => {
         text += `
             <div class="each-questions-wrap">
-              <div class="question-title-wrap">
-                ${ qna.qna_title }
-                <span class="expansion-button-wrap">
-                  <!-- JS - 클릭하면 답변 펼쳐짐 + 버튼 180도 회전 -->
-                  <img
-                    class="expansion-button"
-                    src='/static/public/web/images/common/button-down.png'
-                  />
-                </span>
-              </div>
-              <!-- 답변 - 평소에는 height 0 -->
-              <div class="answer-wrap">
-                <div class="answer-container">
-                  ${qna.qna_content}
+                <div class="question-title-wrap">
+                    ${qna.qna_title}
+                    <span class="expansion-button-wrap">
+                        <!-- JS - 클릭하면 답변 펼쳐짐 + 버튼 180도 회전 -->
+                        <img
+                            class="expansion-button"
+                            src='/static/public/web/images/common/button-down.png'
+                        />
+                    </span>
                 </div>
-              </div>
+                <!-- 답변 - 평소에는 height 0 -->
+                <div class="answer-wrap">
+                    <div class="answer-container">
+                        ${qna.qna_content}
+                    </div>
+                </div>
             </div>
         `;
     });
 
-    // 완성된 문자열 반환
     return text;
 }
-
 const nextQnAs = () => {
     // 햔재 스크롤 위치와 리스트 부분의 현재 높이
     let currentscroll = document.documentElement.scrollTop;
