@@ -74,7 +74,7 @@ const listSection = document.querySelector('.list-section')
 const showQnAs = (qna_info) => {
     // 화면에 뿌릴 HTML 코드를 담기 위한 빈 문자열
     let text = ``
-
+    console.log(qna_info)
     // 조회한 데이터 중 QnA 리스트만 가져옴
     qnas = qna_info.qnas;
 
